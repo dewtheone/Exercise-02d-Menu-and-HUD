@@ -13,13 +13,14 @@ func _ready():
 
 func _physics_process(_delta):
 	position = position + velocity
-	position.x = wrapf(position.x, 0, 1024)
-	position.y = wrapf(position.y, 0, 600)
+	position.x = wrapf(position.x, 0, Global.VP.x)
+	position.y = wrapf(position.y, 0, Global.VP.y)
 
 
 func damage(d):
 	health -= d
 	if health <= 0:
+		Global.update_score(50)
 		collision_layer = 0
 		var Asteroid_Container = get_node_or_null("/root/Game/Asteroid_Container")
 		if Asteroid_Container != null:
