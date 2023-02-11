@@ -5,6 +5,8 @@ var initial_position = Vector2.ZERO
 var direction = Vector2(1.5,0)
 var wobble = 30.0
 
+var Pew_Sound = null
+
 
 var health = 1
 
@@ -45,6 +47,9 @@ func _on_Timer_timeout():
 	var Player = get_node_or_null("/root/Game/Player_Container/Player")
 	Effects = get_node_or_null("/root/Game/Effects")
 	if Player != null and Effects != null:
+		Pew_Sound = get_node_or_null("/root/Game/Pew")
+		if Pew_Sound != null:
+			Pew_Sound.play()
 		var bullet = Bullet.instance()
 		var d = global_position.angle_to_point(Player.global_position) - PI/2
 		bullet.rotation = d

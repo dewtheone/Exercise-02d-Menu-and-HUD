@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Bullet.png" type="Texture" id=2]
+[ext_resource path="res://Assets/bluebeam.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 12.0
@@ -23,6 +23,7 @@ polygon = PoolVector2Array( 12.4, 0.5, 11.3, 3, 9.7, 3, -0.6, 12.4, -3, 11.3, -3
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 autostart = true
 

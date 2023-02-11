@@ -62,4 +62,4 @@ func update_lives(l):
 func reset():
 	score = 0
 	time = 30
-	lives = 5
+	lives = 3

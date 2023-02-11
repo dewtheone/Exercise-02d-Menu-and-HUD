@@ -7,11 +7,15 @@ var speed = 5.0
 var max_speed = 400.0
 var health = 1
 
+
+
 var Effects = null
 onready var Explosion = load("res://Effects/Explosion.tscn")
 
 onready var Bullet = load("res://Player/Bullet.tscn")
-var nose = Vector2(0,-60)
+var nose = Vector2(0,-30)
+
+var Pew_Sound = null
 
 
 
@@ -28,6 +32,9 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("shoot"):
 		Effects = get_node_or_null("/root/Game/Effects")
 		if Effects != null:
+			Pew_Sound = get_node_or_null("/root/Game/Pew")
+			if Pew_Sound != null:
+				Pew_Sound.play()
 			var bullet = Bullet.instance()
 			bullet.global_position = global_position + nose.rotated(rotation)
 			bullet.rotation = rotation
@@ -39,6 +46,7 @@ func get_input():
 	var to_return = Vector2.ZERO
 	$Exhaust.hide()
 	if Input.is_action_pressed("forward"):
+
 		to_return.y -= 1
 		$Exhaust.show()
 	if Input.is_action_pressed("left"):
